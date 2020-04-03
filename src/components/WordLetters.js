@@ -1,14 +1,16 @@
 import React from 'react';
 import { connect } from "react-redux";
+import {actionSetGameFinished} from "../ducks/gameFinishedReducer";
 
 const WordLetters = ({ randomWord, guesses, gameFinished }) => {
     console.log(randomWord);
+    const correctGuesses = guesses.correctGuesses;
     let printWord;
 
     printWord = randomWord.split('').map((char, index) => {
-        const addChar = guesses.includes(char) ? char : null;
+        const addChar = correctGuesses.includes(char) ? char : null;
         let className = char !== ' ' ? 'letterHolder' : null;
-        if(char === ' ') className = null;
+        if(char === ' ') className = 'space';
         return gameFinished
             ?  <div key={index} className={`${className} boldize`}>{char}</div>
             : <div key={index} className={className}>{addChar}</div>;
@@ -27,4 +29,4 @@ const mapStateToProps = (state) => ({
    gameFinished: state.gameFinished,
 });
 
-export default connect(mapStateToProps)(WordLetters);
+export default connect(mapStateToProps, { actionSetGameFinished })(WordLetters);

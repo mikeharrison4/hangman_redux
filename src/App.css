@@ -3,20 +3,24 @@
   margin: 0 auto;
   font-family: 'Baloo Chettan 2', cursive;
   text-align: center;
+  background: white;
 }
 
 .WordLetters {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
+  flex-wrap: wrap;
   margin: auto;
   padding-bottom: 25px;
 }
 
 .WordLetters div {
   margin: 0 10px;
-  width: 100%;
   text-align: center;
+}
+
+.WordLetters > .space {
+  flex: 1 1 100%;
+  height: 10px;
 }
 
 .Keypad {
@@ -33,17 +37,39 @@
   padding: 5px;
   width: 10%;
   margin: 5px;
-  background: red;
+  background: #05A8AA;
+  color: white;
   display: flex;
   justify-content: center;
+  border: none;
+  border-radius: 2.5px;
+  transform: scale(1);
+  transition: all .25s ease;
+}
+
+.Keypad button:hover {
+  transform: scale(1.1);
+}
+
+.Keypad button.incorrect {
+  background: #BC412B;
+}
+
+.Keypad button.correct {
+  background: #B8D5B8;
 }
 
 .letterHolder {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
   text-transform: uppercase;
-  border-bottom: 1px solid black;
   height: 25px;
   font-size: 24px;
   padding: 5px;
+  background: #05A8AA;
+  color: white;
 }
 
 .boldize {
